@@ -1,13 +1,11 @@
 package com.example.demo.book.controllers;
 
 
+import com.example.demo.book.dto.BookDTO;
 import com.example.demo.book.service.BookService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 
@@ -31,11 +29,20 @@ public class BookRestController {
      return reponse;
     }
 
-   @PostMapping ("/book")
+    @PostMapping("/book")
+    public String post(@RequestBody BookDTO.PostInput input) {
 
-    public String post(){
-        return  "ok";
+        log.info(input.getBookName());
+        log.info(String.valueOf(input.getBookPage()));
+
+        String reponse = bookService.createBook(
+                input.getBookName(),
+                input.getBookPage()
+        );
+
+        return reponse;
     }
+
 
 
 }
