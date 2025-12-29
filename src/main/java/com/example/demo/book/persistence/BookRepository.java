@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 public interface BookRepository extends JpaRepository<BookEntity,Long> {
 
+    public BookEntity findByName(String name);
+
     public BookEntity findByNameAndPage(String name, int page);
 
 }
