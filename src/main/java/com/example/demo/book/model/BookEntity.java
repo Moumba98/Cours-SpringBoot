@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.book.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
